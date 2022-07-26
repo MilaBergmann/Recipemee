@@ -1,0 +1,348 @@
+@import url(https://fonts.googleapis.com/css?family=Cookie|Raleway:300,700,400);
+* {
+    box-sizing: border-box;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url("/happyshiba.gif") center no-repeat;
+    background-size: cover;
+    color: #333;
+    font-size: 18px;
+    font-family: "Raleway", sans-serif;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 0.5em;
+    box-shadow: 0 0 1em 0 rgba(51, 51, 51, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    overflow: hidden;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    width: 98%;
+}
+
+button {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid #333;
+    border-radius: 12px;
+    line-height: 1em;
+    padding: 0.5em 0.5em;
+    -webkit-transition: all 0.25s;
+    transition: all 0.25s;
+}
+button:hover,
+button:focus,
+button:active,
+button.loading {
+    background: rgb(216, 141, 3);
+    color: #fff;
+    outline: none;
+}
+.container button.success {
+    background: #27ae60;
+    border-color: #27ae60;
+    color: #fff;
+}
+
+label {
+    text-align: center;
+    display: block;
+    font-size: 1.95em;
+    margin-bottom: 0.5em;
+    -webkit-transition: all 0.25s;
+    transition: all 0.25s;
+}
+
+label input {
+    background: none;
+    border: 3px solid rgba(219, 91, 6, 0.8);
+    line-height: 1em;
+    padding: 0.125em 0.25em;
+    width: 100%;
+}
+label input:focus {
+    outline: none;
+}
+label input:-webkit-autofill {
+    background-color: transparent !important;
+}
+.container label span.label-text {
+    display: block;
+    font-size: 0.5em;
+    font-weight: bold;
+    padding-left: 0.5em;
+    text-transform: uppercase;
+    -webkit-transition: all 0.25s;
+    transition: all 0.25s;
+}
+
+label.invalid {
+    border-color: #c0392b !important;
+}
+label.invalid span.label-text {
+    color: #c0392b;
+}
+
+h1 {
+    font-size: 4em;
+    margin: 0.5em 0 0.5em 0;
+    text-align: center;
+    font-family: "Cookie", cursive;
+}
+
+html {
+    font-size: 20px;
+    height: 100%;
+    font-family: "Cookie", cursive;
+}
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logoContainer {
+    background-color: rgba(255, 145, 0, 0.8);
+    width: 100vw;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 30px;
+    font-family: "Cookie", cursive;
+}
+.myProfile {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    justify-self: end;
+}
+
+.logoContainer h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 2rem;
+}
+
+.profile h2 {
+    padding: 5px;
+    margin-top: 5px;
+    font-family: "Cookie", cursive;
+    font-size: 1.8rem;
+}
+
+.logoContainer img {
+    margin: 15px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile-pic {
+    justify-self: end;
+}
+
+.profile {
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 0 1em 0 rgba(51, 51, 51, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 50%;
+    max-height: 75%;
+    overflow: hidden;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    z-index: 1;
+    width: 98%;
+    overflow: scroll;
+}
+.profile img {
+    max-width: 50%;
+}
+.loggedIn {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    position: absolute;
+    width: 100vw;
+    height: 5vh;
+    text-align: right;
+    background-color: rgba(255, 145, 0, 0.8);
+    bottom: 0;
+    padding: 10px;
+}
+
+.links {
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 2rem;
+    color: rgba(155, 63, 2, 0.8);
+}
+
+.uploader {
+    border-radius: 0.5em;
+    background: rgba(255, 160, 0, 0.9);
+    box-shadow: 0 0 1em 0 rgba(51, 51, 51, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 50%;
+    max-height: 60%;
+    overflow: hidden;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+}
+textarea {
+    max-width: 80%;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.bioInput {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 200px;
+}
+
+.saveBio {
+    max-width: 20%;
+    align-self: center;
+}
+
+.searchPeople {
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 0 1em 0 rgba(51, 51, 51, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 50%;
+    max-height: 80%;
+    overflow: hidden;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    z-index: 1;
+    width: 98%;
+}
+.searchPeople * {
+    margin: 3px;
+}
+.searchPeople img {
+    max-width: 50%;
+}
+ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+.profile * {
+    margin: 10px;
+}
+
+.friends,
+.wannabes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 30%;
+    align-items: center;
+    margin: 20px;
+}
+
+.friendsContainer {
+    max-height: calc(100vh - 5rem);
+    max-width: calc(100vw - 1rem);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.fandb img {
+    width: 180px;
+    height: 210px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+.fandb h1 {
+    margin: 1rem;
+    font-size: 2rem;
+    font-family: "Raleway", sans-serif;
+    color: rgba(155, 63, 2, 0.8);
+}
+.fandb {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 0 1em 0 rgba(51, 51, 51, 0.25);
+    align-items: center;
+    align-self: center;
+    margin-top: 10px;
+    border-radius: 15px;
+}
+nav {
+    width: 100vw;
+    background-color: rgba(255, 160, 0, 0.9);
+    display: flex;
+    justify-content: space-around;
+    font-size: larger;
+}
+
+nav * {
+    font-size: larger;
+    font-weight: bold;
+    color: rgba(155, 63, 2, 0.8);
+}
+
+.chat-display-container {
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    border: 5px solid skyblue;
+}
+.chat img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    border: 4px solid skyblue;
+}
+
+.chat  {
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+}
