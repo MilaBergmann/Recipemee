@@ -1,7 +1,8 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS reset_codes;
-DROP TABLE IF EXISTS friendships;
-DROP TABLE IF EXISTS chats;
+DROP TABLE IF EXISTS items;
+
+
 
 
 CREATE TABLE users (
@@ -14,9 +15,7 @@ CREATE TABLE users (
        bio TEXT
    );
 
-
-
-    CREATE TABLE reset_codes(
+ CREATE TABLE reset_codes(
     id SERIAL PRIMARY KEY,
     email VARCHAR NOT NULL,
     code VARCHAR NOT NULL,
@@ -24,18 +23,17 @@ CREATE TABLE users (
   );
 
 
-  CREATE TABLE friendships(
-      id SERIAL PRIMARY KEY,
-      sender_id INT REFERENCES users(id) NOT NULL,
-      recipient_id INT REFERENCES users(id) NOT NULL,
-      accepted BOOLEAN DEFAULT false
-  );
-
-
-CREATE TABLE chats(
+  CREATE TABLE items(
     id SERIAL PRIMARY KEY,
-    sender_id INT REFERENCES users(id) NOT NULL,
-    message TEXT,
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    user_id INT REFERENCES users(id) NOT NULL, 
+    title TEXT NOT NULL,
+    item_img TEXT NOT NULL
+  )
 
-);
+
+
+
+    
+
+
+  

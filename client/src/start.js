@@ -4,9 +4,9 @@ import App from "./app.js";
 import { createStore, applyMiddleware } from "redux";
 import * as immutableState from "redux-immutable-state-invariant";
 import { composeWithDevTools } from "redux-devtools-extension";
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
 import rootReducer from "./redux/reducer";
-import {init} from "./socket";
+
 
 const store = createStore(
     rootReducer,
@@ -20,7 +20,7 @@ fetch("/user/id.json")
             ReactDOM.render(<Welcome />, document.querySelector("main"));
         } else {
             //initialize websocket connection and pass store to it
-            init(store);
+
             ReactDOM.render(
                 <Provider store={store}>
                     <App />

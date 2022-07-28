@@ -1,13 +1,9 @@
 import { Component } from "react";
-import Logo from "./logo";
-import ProfilePic from "./profilePic";
 import Uploader from "./uploader";
 import Profile from "./profile";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-import FindPeople from "./findPeople";
-import OtherProfile from "./otherProfile";
-import FriendsAndWannaBe from "./friends-wannabe";
-import Chat from "./chat";
+import Header from "./hearder";
+import Footer from "./footer";
 
 export default class App extends Component {
     constructor() {
@@ -61,70 +57,48 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="loggedIn">
-                <BrowserRouter>
-                    <div className="logoContainer">
-                        <Logo />
-                        <h2>Good to See You! {this.state.first} </h2>
+            <>
+                <Header />
+                <div className="loggedIn">
+                    <BrowserRouter>
+                        <div className="logoContainer">
+                            <Profile
+                                first={this.state.first}
+                                last={this.state.last}
+                                imageUrl={this.state.imageUrl}
+                                toggleModal={() => this.toggleModal()}
+                                bio={this.state.bio}
+                                setBioInApp={(bio) => this.setBioInApp(bio)}
+                            />
+                        </div>
 
-                        <ProfilePic
-                            first={this.state.first}
-                            last={this.state.last}
-                            imageUrl={this.state.imageUrl}
-                            toggleModal={() => this.toggleModal()}
-                        />
-                    </div>
-                    <nav>
-                        <Link to="/find">Find People</Link>
-                        <Link to="/" className="myProfile">
-                            My Profile
-                        </Link>
-                        <Link to="/friends">Friends</Link>
-                        <Link to="/chat">My Chat</Link>
-                    </nav>
+                        <Switch>
+                            <Route exact path="/">
+                                {this.state.uploaderIsVisible && (
+                                    <Uploader
+                                        handleSubmitInApp={(url) =>
+                                            this.handleSubmitInApp(url)
+                                        }
+                                    />
+                                )}
 
-                    <Switch>
-                        <Route exact path="/">
-                            {this.state.uploaderIsVisible && (
-                                <Uploader
-                                    handleSubmitInApp={(url) =>
-                                        this.handleSubmitInApp(url)
-                                    }
-                                />
-                            )}
-
-                            {!this.state.uploaderIsVisible && (
-                                <Profile
-                                    first={this.state.first}
-                                    last={this.state.last}
-                                    imageUrl={this.state.imageUrl}
-                                    bio={this.state.bio}
-                                    setBioInApp={(bio) => this.setBioInApp(bio)}
-                                />
-                            )}
-                        </Route>
-                        <Route path="/find">
-                            <FindPeople />
-                        </Route>
-                        <Route path="/user/:otherUserId">
-                            <OtherProfile />
-                        </Route>
-                        <Route path="/friends">
-                            <FriendsAndWannaBe />
-                        </Route>
-                        <Route path="/chat">
-                            <Chat />
-                        </Route>
-                    </Switch>
-                </BrowserRouter>
-                <footer>
-                    <button>
-                        <a href="/logout" className="links">
-                            Log out
-                        </a>
-                    </button>
-                </footer>
-            </div>
+                                {!this.state.uploaderIsVisible && (
+                                    <Profile
+                                        first={this.state.first}
+                                        last={this.state.last}
+                                        imageUrl={this.state.imageUrl}
+                                        bio={this.state.bio}
+                                        setBioInApp={(bio) =>
+                                            this.setBioInApp(bio)
+                                        }
+                                    />
+                                )}
+                            </Route>
+                        </Switch>
+                    </BrowserRouter>
+                </div>
+                <Footer />
+            </>
         );
     }
 }

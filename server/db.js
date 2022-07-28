@@ -1,5 +1,5 @@
 const spicedPg = require("spiced-pg");
-const database = "socialnetwork";
+const database = "finalProject";
 const username = "postgres";
 
 const password = "postgres";
@@ -68,6 +68,15 @@ module.exports.updateImg = (imageUrl, id) => {
     WHERE id = $2
     RETURNING img_url;`,
         [imageUrl, id]
+    );
+};
+
+module.exports.updateItems = (id, title, itemImg) => {
+    return db.query(
+        `INSERT INTO items (user_id, title, item_img)
+        VALUES ($1, $2, $3)
+        RETURNING *;`,
+        [id, title, itemImg]
     );
 };
 

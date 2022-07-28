@@ -2,13 +2,14 @@ import Registration from "./registration";
 import { BrowserRouter, Route } from "react-router-dom";
 import Login from "./login";
 import ResetPassword from "./resetPassword";
-
+import Header from "./hearder";
+import Footer from "./footer";
 
 export default function Welcome() {
     return (
-        <div >
-            <h1>Welcome to the Shiba World!</h1>
-            
+        <div>
+            <Header />
+
             <BrowserRouter>
                 <div>
                     <Route exact path="/">
@@ -22,6 +23,7 @@ export default function Welcome() {
                     </Route>
                 </div>
             </BrowserRouter>
+            <Footer />
         </div>
     );
 }
