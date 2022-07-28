@@ -1,14 +1,12 @@
-import { Component } from "react";
 
-export default class Uploader extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+import { useParams } from "react-router";
+import { useState, useEffect } from "react";
 
-    handleUpload(e) {
+export default function Uploader() {
+    const { profile } = useParams();
+    function handleUpload(e) {
         e.preventDefault();
-        fetch("/upload", {
+        fetch("/upload/" + profile, {
             method: "POST",
             body: new FormData(e.target),
         })
@@ -22,22 +20,20 @@ export default class Uploader extends Component {
             });
     }
 
-    render() {
-        return (
-            <div className="uploader">
-                <p>Upload your profile image</p>
-                <form onSubmit={(e) => this.handleUpload(e)}>
-                    <input
-                        className="file"
-                        name="image"
-                        type="file"
-                        accept="image/*"
-                    ></input>
-                    <button style={{ width: 80 + "px" }} name="submit">
-                        Upload
-                    </button>
-                </form>
-            </div>
-        );
-    }
+    return (
+        <div className="uploader">
+            <p>Upload your profile image</p>
+            <form onSubmit={(e) => this.handleUpload(e)}>
+                <input
+                    className="file"
+                    name="image"
+                    type="file"
+                    accept="image/*"
+                ></input>
+                <button style={{ width: 80 + "px" }} name="submit">
+                    Upload
+                </button>
+            </form>
+        </div>
+    );
 }

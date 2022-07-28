@@ -211,16 +211,41 @@ app.get("/users/:id", (req, res) => {
         });
 });
 
-app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
-    db.updateImg(
-        "https://s3.amazonaws.com/spicedling/" + req.file.filename,
-        req.session.userId
-    )
+app.post("/upload/:action", uploader.single("image"), s3.upload, (req, res) => {
+    if (req.params.action == "profile") {
+        db.updateImg(
+            "https://s3.amazonaws.com/spicedling/" + req.file.filename,
+            req.session.userId
+        )
+            .then((results) => {
+                res.json(results.rows[0]);
+            })
+            .catch((err) => {
+                console.log("there is something wrong at update image", err);
+            });
+    } else if (req.params.action == "item") {
+        db.addItems(
+            req.session.userId,
+            req.body.title,
+            "https://s3.amazonaws.com/spicedling/" + req.file.filename
+        )
+            .then((results) => {
+                console.log("add items", results.rows[0]);
+            })
+            .catch((err) => {
+                console.log("there is something wrong at adding items", err);
+            });
+    }
+});
+
+app.get("/items", (req, res) => {
+    db.getItems()
         .then((results) => {
-            res.json(results.rows[0]);
+            console.log("get items", results.rows);
+            res.json(results.rows);
         })
         .catch((err) => {
-            console.log("there is something wrong at update image", err);
+            console.log("Error at getting items", err);
         });
 });
 

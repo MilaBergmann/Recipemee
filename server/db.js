@@ -71,7 +71,7 @@ module.exports.updateImg = (imageUrl, id) => {
     );
 };
 
-module.exports.updateItems = (id, title, itemImg) => {
+module.exports.addItems = (id, title, itemImg) => {
     return db.query(
         `INSERT INTO items (user_id, title, item_img)
         VALUES ($1, $2, $3)
@@ -80,6 +80,12 @@ module.exports.updateItems = (id, title, itemImg) => {
     );
 };
 
+module.exports.getItems = () => {
+    return db.query(
+        `SELECT * FROM items
+        ORDER BY id DESC;`
+    );
+};
 module.exports.updateBio = (id, bio) => {
     return db.query(
         `UPDATE users

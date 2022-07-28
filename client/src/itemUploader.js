@@ -1,43 +1,46 @@
-import { Component } from "react";
+import { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router";
 
-export default class ItemUploader extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    handleUpload(e) {
+export default function ItemUploader() {
+   
+    const handleUpload = (e) => {
         e.preventDefault();
-        fetch("/upload", {
+        fetch("/upload/item" , {
             method: "POST",
             body: new FormData(e.target),
         })
             .then((resp) => resp.json())
             .then((data) => {
                 console.log("data at upload", data);
-                this.props.handleSubmitInApp(data.img_url);
+                
             })
             .catch((err) => {
                 console.log("err at fetching /upload", err);
             });
-    }
+    };
 
-    render() {
-        return (
-            <div className="uploader">
-                <p>Add your Items</p>
-                <form onSubmit={(e) => this.handleUpload(e)}>
-                    <input
-                        className="file"
-                        name="image"
-                        type="file"
-                        accept="image/*"
-                    ></input>
-                    <button style={{ width: 80 + "px" }} name="submit">
-                        Add
-                    </button>
-                </form>
-            </div>
-        );
-    }
+    return (
+        <div className="uploader">
+            <p>Add your Items</p>
+            <form onSubmit={(e) => handleUpload(e)}>
+                <input
+                    className="file"
+                    name="image"
+                    type="file"
+                    accept="image/*"
+                ></input>
+                <label>Choose a catagory</label>
+                <select name="title">
+                    <option>TShirt</option>
+                    <option>Skirt</option>
+                    <option>Jeans</option>
+                    <option>Jacket</option>
+                    <option>Sweater</option>
+                </select>
+                <button style={{ width: 80 + "px" }} name="submit">
+                    Add
+                </button>
+            </form>
+        </div>
+    );
 }

@@ -55,7 +55,7 @@ export default class Bio extends Component {
         return (
             <>
                 {(this.state.showTextArea && (
-                    <section className="bioInput">
+                    <section className="profile-bio">
                         <textarea
                             name="bio"
                             rows="6"
