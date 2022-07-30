@@ -71,18 +71,18 @@ module.exports.updateImg = (imageUrl, id) => {
     );
 };
 
-module.exports.addItems = (id, title, itemImg) => {
+module.exports.addRecipes = (id, name, img, ingredients, steps) => {
     return db.query(
-        `INSERT INTO items (user_id, title, item_img)
-        VALUES ($1, $2, $3)
+        `INSERT INTO recipes (user_id, name, img_url, ingredients, steps)
+        VALUES ($1, $2, $3, $4, $5)
         RETURNING *;`,
-        [id, title, itemImg]
+        [id, name, img, ingredients, steps]
     );
 };
 
-module.exports.getItems = () => {
+module.exports.getRecipes = () => {
     return db.query(
-        `SELECT * FROM items
+        `SELECT * FROM Recipes
         ORDER BY id DESC;`
     );
 };
@@ -182,3 +182,4 @@ module.exports.receiveChats = () => {
         LIMIT 10;`
     );
 };
+

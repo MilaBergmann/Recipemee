@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ItemUploader from "./itemUploader";
+
 export default function Items() {
     const [items, setItems] = useState([]);
     const [uploader, setUploader] = useState(false);
@@ -25,7 +25,7 @@ export default function Items() {
             console.log("cleanup running");
             abort = true;
         };
-    }, []);
+    }, [items]);
 
     const handleAddItems = () => {
         setUploader(!uploader);

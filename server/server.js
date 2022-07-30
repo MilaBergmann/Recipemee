@@ -223,11 +223,13 @@ app.post("/upload/:action", uploader.single("image"), s3.upload, (req, res) => {
             .catch((err) => {
                 console.log("there is something wrong at update image", err);
             });
-    } else if (req.params.action == "item") {
-        db.addItems(
+    } else if (req.params.action == "recipes") {
+        db.addRecipes(
             req.session.userId,
-            req.body.title,
-            "https://s3.amazonaws.com/spicedling/" + req.file.filename
+            req.body.name,
+            "https://s3.amazonaws.com/spicedling/" + req.file.filename,
+            req.body.ingredients,
+            req.body.steps
         )
             .then((results) => {
                 console.log("add items", results.rows[0]);
@@ -238,8 +240,8 @@ app.post("/upload/:action", uploader.single("image"), s3.upload, (req, res) => {
     }
 });
 
-app.get("/items", (req, res) => {
-    db.getItems()
+app.get("/recipes", (req, res) => {
+    db.getRecipes()
         .then((results) => {
             res.json(results.rows);
         })
@@ -280,6 +282,8 @@ app.get("/findusers/:search", (req, res) => {
             console.log("there is something wrong at finding users", err);
         });
 });
+
+
 
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));

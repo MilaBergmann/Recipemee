@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-
-
-export default function ItemUploader() {
+export default function writeRecipes() {
    
     const handleUpload = (e) => {
         e.preventDefault();

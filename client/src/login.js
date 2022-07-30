@@ -33,7 +33,7 @@ export default class Login extends Component {
                 if (data.error) {
                     this.setState({ error: data.error });
                 } else {
-                    location.reload();
+                    location.replace("/");
                 }
             })
             .catch((err) => {

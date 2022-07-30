@@ -5,7 +5,8 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Header from "./hearder";
 import Footer from "./footer";
 import Cards from "./cards";
-import SwipeButtons from "./swipeButtons";
+import WriteRecipes from "./writeRecipes";
+import Login from "./login";
 
 export default class App extends Component {
     constructor() {
@@ -66,7 +67,6 @@ export default class App extends Component {
                             <Route exact path="/">
                                 <Header />
                                 <Cards />
-                                <SwipeButtons />
                             </Route>
                             <Route path="/profile">
                                 <Header backButton="/" />
@@ -90,6 +90,15 @@ export default class App extends Component {
                                         }
                                     />
                                 )}
+                            </Route>
+
+                            <Route path="/login">
+                                <Header />
+                                <Login />
+                            </Route>
+                            <Route path="/write">
+                                <Header />
+                                <WriteRecipes />
                             </Route>
                         </Switch>
                         <Footer />

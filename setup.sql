@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS reset_codes;
-DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS recipes;
+
 
 
 
@@ -23,12 +24,14 @@ CREATE TABLE users (
   );
 
 
-  CREATE TABLE items(
+  CREATE TABLE recipes(
     id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id) NOT NULL, 
-    title TEXT NOT NULL,
-    item_img TEXT NOT NULL
-  )
+    user_id INT REFERENCES users(id) NOT NULL , 
+    name TEXT NOT NULL,
+    img_url TEXT NOT NULL,
+    ingredients TEXT NOT NULL,
+    steps TEXT NOT NULL
+  );
 
 
 
