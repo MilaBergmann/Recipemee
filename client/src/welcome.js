@@ -8,9 +8,8 @@ import Footer from "./footer";
 export default function Welcome() {
     return (
         <div>
-            <Header />
-
             <BrowserRouter>
+                <Header />
                 <div>
                     <Route exact path="/">
                         <Registration />

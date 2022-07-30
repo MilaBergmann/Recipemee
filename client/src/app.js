@@ -4,6 +4,8 @@ import Profile from "./profile";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Header from "./hearder";
 import Footer from "./footer";
+import Cards from "./cards";
+import SwipeButtons from "./swipeButtons";
 
 export default class App extends Component {
     constructor() {
@@ -58,22 +60,16 @@ export default class App extends Component {
     render() {
         return (
             <>
-                <Header />
                 <div className="loggedIn">
                     <BrowserRouter>
-                        <div className="logoContainer">
-                            <Profile
-                                first={this.state.first}
-                                last={this.state.last}
-                                imageUrl={this.state.imageUrl}
-                                toggleModal={() => this.toggleModal()}
-                                bio={this.state.bio}
-                                setBioInApp={(bio) => this.setBioInApp(bio)}
-                            />
-                        </div>
-
                         <Switch>
                             <Route exact path="/">
+                                <Header />
+                                <Cards />
+                                <SwipeButtons />
+                            </Route>
+                            <Route path="/profile">
+                                <Header backButton="/" />
                                 {this.state.uploaderIsVisible && (
                                     <Uploader
                                         handleSubmitInApp={(url) =>
@@ -87,6 +83,7 @@ export default class App extends Component {
                                         first={this.state.first}
                                         last={this.state.last}
                                         imageUrl={this.state.imageUrl}
+                                        toggleModal={() => this.toggleModal()}
                                         bio={this.state.bio}
                                         setBioInApp={(bio) =>
                                             this.setBioInApp(bio)
@@ -95,9 +92,9 @@ export default class App extends Component {
                                 )}
                             </Route>
                         </Switch>
+                        <Footer />
                     </BrowserRouter>
                 </div>
-                <Footer />
             </>
         );
     }

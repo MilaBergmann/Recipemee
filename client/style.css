@@ -7,7 +7,7 @@
     font-family: "Mochiy Pop One", sans-serif;
 }
 
-header {
+.header {
     color:  #5d6ac0;
     text-shadow: 4px 4px pink;
     width: 100vw;
@@ -15,11 +15,15 @@ header {
     background-color: gold;
     display: flex;
     justify-content: space-between;
+   
 }
 
-header img {
-    max-height: 100%;
+.header img,
+.swipeButtons img {
+    width: 70px;
+    height: 70px;
     padding: 0.5rem;
+    object-fit: contain;
 }
 
 .welcome {
@@ -173,7 +177,7 @@ footer {
 .profile-edit-btn {
     font-size: 1.4rem;
     line-height: 1.8;
-    border: 0.1rem solid #dbdbdb;
+    border: 0.1rem solid  #838bc2;
     border-radius: 0.3rem;
     padding: 0 2.4rem;
     margin-left: 2rem;
@@ -183,4 +187,43 @@ footer {
     font-weight: 400;
     line-height: 1.5;
     margin-top: 2.3rem;
+}
+
+.card{
+    position: relative;
+    width: 600px;
+    padding: 20px;
+    max-width: 85vw;
+    height: 50vh;
+    border-radius: 20px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 5px 10px 20px 0px  pink;
+}
+
+.card  h3 {
+    position: absolute;
+    bottom: 15px;
+    color: black;
+    font-size: 2rem;
+    margin-left: 10%;
+    
+}
+.cardsContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 9vh;
+}
+
+.swipe{
+    position: absolute;
+}
+
+.swipeButtons {
+    position: fixed;
+    bottom: 15vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
 }

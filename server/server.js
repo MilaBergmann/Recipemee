@@ -241,7 +241,6 @@ app.post("/upload/:action", uploader.single("image"), s3.upload, (req, res) => {
 app.get("/items", (req, res) => {
     db.getItems()
         .then((results) => {
-            console.log("get items", results.rows);
             res.json(results.rows);
         })
         .catch((err) => {
