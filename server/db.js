@@ -71,12 +71,12 @@ module.exports.updateImg = (imageUrl, id) => {
     );
 };
 
-module.exports.addRecipes = (id, name, img, ingredients, steps) => {
+module.exports.addRecipes = (id, name, title, img, ingredients, steps) => {
     return db.query(
-        `INSERT INTO recipes (user_id, name, img_url, ingredients, steps)
-        VALUES ($1, $2, $3, $4, $5)
-        RETURNING *;`,
-        [id, name, img, ingredients, steps]
+        `INSERT INTO recipes (user_id, name, title, img_url, ingredients, steps)
+        VALUES ($1, $2, $3, $4, $5, $6)
+       ;`,
+        [id, name, title, img, ingredients, steps]
     );
 };
 
@@ -106,5 +106,3 @@ module.exports.searchUsers = (val) => {
         [val + "%"]
     );
 };
-
-

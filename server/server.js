@@ -226,13 +226,16 @@ app.post("/upload/:action", uploader.single("image"), s3.upload, (req, res) => {
     } else if (req.params.action == "recipes") {
         db.addRecipes(
             req.session.userId,
-            req.body.name,
+            req.body.recipeName,
+            req.body.title,
             "https://s3.amazonaws.com/spicedling/" + req.file.filename,
             req.body.ingredients,
             req.body.steps
         )
-            .then((results) => {
-                console.log("add items", results.rows[0]);
+            .then(() => {
+                res.json({
+                    success: true,
+                });
             })
             .catch((err) => {
                 console.log("there is something wrong at adding items", err);

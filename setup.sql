@@ -28,6 +28,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(id) NOT NULL , 
     name TEXT NOT NULL,
+    title TEXT NOT NULL,
     img_url TEXT NOT NULL,
     ingredients TEXT NOT NULL,
     steps TEXT NOT NULL

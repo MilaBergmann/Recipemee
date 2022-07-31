@@ -4,19 +4,19 @@ import IconButton from "@material-ui/core/IconButton";
 import { useDispatch, useSelector } from "react-redux";
 import { makeLike } from "./redux/likes/slice.js";
 export default function Cards() {
-    const [items, setItems] = useState([]);
+    const [recipes, setRecipes] = useState([]);
     const dispatch = useDispatch();
 
     useEffect(() => {
         let abort = false;
         (async () => {
             try {
-                const respBody = await fetch("/items");
+                const respBody = await fetch("/recipes");
                 const data = await respBody.json();
                 console.log("data at items", data);
                 if (!abort) {
-                    setItems(data);
-                    console.log("items", items);
+                    setRecipes(data);
+                    console.log("items", recipes);
                 } else {
                     console.log("ignore don't run a a state update");
                 }
@@ -33,17 +33,19 @@ export default function Cards() {
     return (
         <div>
             <div className="cardsContainer">
-                {items.map((item) => (
+                {recipes.map((recipe) => (
                     <TinderCard
                         className="swipe"
-                        key={item.id}
+                        key={recipe.id}
                         preventSwipe={["up", "down"]}
                     >
                         <div
-                            style={{ backgroundImage: `url(${item.item_img})` }}
+                            style={{
+                                backgroundImage: `url(${recipe.img_url})`,
+                            }}
                             className="card"
                         >
-                            <h3>{item.title}</h3>
+                            <h3>{recipe.name}</h3>
                         </div>
                     </TinderCard>
                 ))}
