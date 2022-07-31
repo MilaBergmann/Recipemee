@@ -96,13 +96,6 @@ module.exports.updateBio = (id, bio) => {
     );
 };
 
-module.exports.getRecentUsers = () => {
-    return db.query(`
-    SELECT * FROM users
-     ORDER BY id DESC
-    LIMIT 3;`);
-};
-
 module.exports.searchUsers = (val) => {
     return db.query(
         `SELECT * 
@@ -114,72 +107,4 @@ module.exports.searchUsers = (val) => {
     );
 };
 
-module.exports.checkFriendship = (id, otherId) => {
-    return db.query(
-        `SELECT * FROM friendships 
-        WHERE (recipient_id = $1 AND sender_id = $2) 
-        OR (recipient_id = $2 AND sender_id = $1);`,
-        [id, otherId]
-    );
-};
-
-module.exports.addFriendship = (id, otherId) => {
-    return db.query(
-        `INSERT INTO friendships (sender_id, recipient_id)
-        VALUES ( $1, $2);
-        `,
-        [id, otherId]
-    );
-};
-
-module.exports.acceptFriendship = (id, otherId) => {
-    return db.query(
-        `UPDATE friendships
-    SET accepted = true
-    WHERE (recipient_id = $1 AND sender_id = $2) 
-    ;`,
-        [id, otherId]
-    );
-};
-
-module.exports.deleteFriendship = (id, otherId) => {
-    return db.query(
-        `DELETE FROM friendships
-        WHERE (recipient_id = $1 AND sender_id = $2) 
-        OR (recipient_id = $2 AND sender_id = $1);`,
-        [id, otherId]
-    );
-};
-
-module.exports.getFriendsAndWannabes = (id) => {
-    return db.query(
-        `SELECT users.id, users.first, users.last, users.img_url, friendships.accepted
-FROM friendships
-JOIN users
-ON (accepted = false AND recipient_id = $1 AND sender_id  = users.id)
-OR (accepted = true AND recipient_id = $1 AND sender_id  = users.id)
-OR (accepted = true AND sender_id = $1 AND recipient_id = users.id)
-;`,
-        [id]
-    );
-};
-
-module.exports.addChats = (id, message) => {
-    return db.query(
-        `INSERT INTO chats (sender_id, message)
-        VALUES ($1, $2)
-        RETURNING *;`,
-        [id, message]
-    );
-};
-
-module.exports.receiveChats = () => {
-    return db.query(
-        `SELECT chats.id, chats.sender_id, chats.message, chats.timestamp, users.first, users.last, users.img_url
-        FROM chats 
-        LEFT JOIN users ON sender_id = users.id
-        ORDER BY chats.id DESC
-        LIMIT 10;`
-    );
-};
 

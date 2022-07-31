@@ -283,8 +283,6 @@ app.get("/findusers/:search", (req, res) => {
         });
 });
 
-
-
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });
