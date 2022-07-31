@@ -22,13 +22,16 @@ export default function ProfilePic({
             </div>
 
             <div className="profile-user-settings">
-                <h1 className="profile-user-name">
-                    {first} {last}
-                </h1>
+                <section className="userName">
+                    <h1 className="profile-user-name">
+                        {first} {last}
+                    </h1>
+                </section>
+                <section className="bioEditor">
+                    <Bio bio={bio} setBioInApp={(bio) => setBioInApp(bio)} />
+                </section>
 
-                <button className="btn profile-edit-btn">Edit Profile</button>
-                <Bio bio={bio} setBioInApp={(bio) => setBioInApp(bio)} />
-                <button>
+                <button className="logOut">
                     <a href="/logout" className="links">
                         Log out
                     </a>

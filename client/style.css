@@ -115,12 +115,20 @@ footer {
 }
 
 .profile-pic {
+    margin-top: 1.8rem;
+    margin-left: 2.2rem;
     width: 10rem;
     border-radius: 10rem;
     display: block;
 }
 .profile {
+    position: fixed;
+    width: 30vw;
+    height: 90vh;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(233, 196, 222, 0.8);
 }
 .addItems {
     width: 3rem;
@@ -159,10 +167,6 @@ footer {
     border: 8px double gold;
 }
 
-.profile {
-    padding: 1rem 0;
-}
-
 .profile-user-settings {
     float: left;
     width: calc(66.666% - 2rem);
@@ -181,14 +185,7 @@ footer {
     font-size: 3.2rem;
     font-weight: 300;
 }
-.profile-edit-btn {
-    font-size: 1.4rem;
-    line-height: 1.8;
-    border: 0.1rem solid #838bc2;
-    border-radius: 0.3rem;
-    padding: 0 2.4rem;
-    margin-left: 2rem;
-}
+
 .profile-bio {
     font-size: 1.6rem;
     font-weight: 400;
@@ -201,7 +198,7 @@ footer {
     width: 600px;
     padding: 20px;
     max-width: 85vw;
-    height: 50vh;
+    height: 60vh;
     border-radius: 20px;
     background-position: center;
     background-size: cover;
@@ -225,14 +222,6 @@ footer {
 
 .swipe {
     position: absolute;
-}
-
-.swipeButtons {
-    position: fixed;
-    bottom: 15vh;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
 }
 
 .outerWrapper {
@@ -263,7 +252,9 @@ footer {
     text-shadow: 2px 2px purple;
 }
 .write button,
-form button {
+form button,
+.logOut,
+.saveBio {
     border-radius: 15px;
     display: inline-block;
     width: 10rem;
@@ -350,4 +341,21 @@ form {
 
 .ingredients {
     margin-left: -30px;
+}
+.logOut {
+    position: fixed;
+    bottom: 5vh;
+    left: 10vw;
+}
+
+.userName,
+.bioEditor {
+    color: gold;
+    text-shadow: 2px 2px purple;
+    text-align: center;
+    margin: 2rem;
+}
+
+.bioEditor * {
+    margin-top: 1.5rem;
 }

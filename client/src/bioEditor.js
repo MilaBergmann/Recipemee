@@ -58,13 +58,13 @@ export default class Bio extends Component {
                     <section className="profile-bio">
                         <textarea
                             name="bio"
-                            rows="6"
-                            cols="48"
+                            rows="10"
+                            cols="15"
                             defaultValue={this.props.bio}
                             onChange={(e) => this.handleChange(e)}
                         ></textarea>
                         <button
-                            className="saveBio"
+                            className="save"
                             onClick={() => this.saveBio()}
                         >
                             Save Bio
@@ -73,9 +73,10 @@ export default class Bio extends Component {
                 )) ||
                     (this.props.bio && (
                         <section className="bioInput">
-                            <h2>Bio: {this.props.bio}</h2>
+                            <label>About me : </label>
+                            <p>{this.props.bio}</p>
                             <button
-                                className="submit"
+                                className="saveBio"
                                 onClick={() => {
                                     this.toggleBioEditor();
                                     this.addBio();
@@ -87,6 +88,7 @@ export default class Bio extends Component {
                     )) || (
                         <section className="bioInput">
                             <button
+                                className="saveBio"
                                 onClick={() => {
                                     this.toggleBioEditor();
                                 }}

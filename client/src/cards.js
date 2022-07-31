@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
-import IconButton from "@material-ui/core/IconButton";
 import { useDispatch, useSelector } from "react-redux";
 import { makeLike } from "./redux/likes/slice.js";
 export default function Cards() {
@@ -49,14 +48,6 @@ export default function Cards() {
                         </div>
                     </TinderCard>
                 ))}
-                <div className="swipeButtons">
-                    <IconButton>
-                        <img src="./no.png"></img>
-                    </IconButton>
-                    <IconButton>
-                        <img src="./like.png"></img>
-                    </IconButton>
-                </div>
             </div>
         </div>
     );
