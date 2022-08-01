@@ -1,13 +1,19 @@
+import Uploader from "./uploader";
+import { useState } from "react";
+
 import Bio from "./bioEditor";
 export default function ProfilePic({
     first,
     last,
     imageUrl,
-    toggleModal,
     bio,
     setBioInApp,
 }) {
-    // console.log("info being passed down from App: ", imageUrl);
+    const [uploaderIsVisible, setUploaderIsVisible] = useState(false);
+
+    const toggleUploader = () => {
+        setUploaderIsVisible(!uploaderIsVisible);
+    };
     imageUrl = imageUrl || "/default.jpg";
 
     return (
@@ -17,10 +23,10 @@ export default function ProfilePic({
                     className="profile-pic"
                     src={imageUrl}
                     alt={first + last}
-                    onClick={() => toggleModal()}
+                    onClick={() => toggleUploader()}
                 />
             </div>
-
+            {uploaderIsVisible && <Uploader />}
             <div className="profile-user-settings">
                 <section className="userName">
                     <h1 className="profile-user-name">

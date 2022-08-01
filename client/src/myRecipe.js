@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import Details from "./Details";
+import  TinderCard from "react-tinder-card";
+
 export default function MyRecipe() {
     const [myRecipes, setMyRecipes] = useState([]);
-    const [detailsIsVisible, setDetailsIsVisible] = useState(false);
+
     useEffect(() => {
         let abort = false;
         (async () => {
@@ -29,18 +30,37 @@ export default function MyRecipe() {
     return (
         <div>
             <section>
-                <p>My Recipe</p>
+                <p>Swipe Cards to See More of Your Recipes</p>
             </section>
             {myRecipes.length == 0 ? (
                 <p>It seems like you don't have your own recipes yet! </p>
             ) : (
-                <div className="gallery">
-                    {myRecipes.map((myRecipe) => (
-                        <section key={myRecipe.id} className="gallery-item">
-                            <img src={myRecipe.img_url}></img>
-                            <span>{myRecipe.name}</span>
-                        </section>
-                    ))}
+                <div>
+                    <div className="gallery">
+                        {myRecipes.map((myRecipe) => (
+                            <TinderCard key={myRecipe.id} className="swipe">
+                                <div className="gallery-items">
+                                    <section className="gallery-item">
+                                        <img src={myRecipe.img_url}></img>
+                                        <span>{myRecipe.name}</span>
+                                    </section>
+                                    <section
+                                        key={myRecipe.id}
+                                        className="detailContainer"
+                                    >
+                                        <section className="details">
+                                            <span> Ingredients:</span>
+                                            {myRecipe.ingredients}
+                                        </section>
+                                        <section className="details ">
+                                            <span> Steps:</span>
+                                            {myRecipe.steps}
+                                        </section>
+                                    </section>
+                                </div>
+                            </TinderCard>
+                        ))}
+                    </div>
                 </div>
             )}
         </div>

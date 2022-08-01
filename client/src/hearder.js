@@ -34,9 +34,12 @@ export default function Header({ backButton }) {
                     <img src="./pen.png"></img>
                 </IconButton>
             </Link>
-            <IconButton onClick={() => handleSearchField()}>
+            <IconButton>
                 {searchFieldIsVisible && <Search />}
-                <img src="./search.png"></img>
+                <img
+                    src="./search.png"
+                    onClick={() => handleSearchField()}
+                ></img>
             </IconButton>
         </div>
     );

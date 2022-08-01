@@ -1,5 +1,4 @@
 import { Component } from "react";
-import Uploader from "./uploader";
 import Profile from "./profile";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Header from "./hearder";
@@ -14,8 +13,6 @@ export default class App extends Component {
         this.state = {
             first: "",
             last: "",
-            imageUrl: "",
-            uploaderIsVisible: false,
             findPeopleIsVisibile: false,
             bio: "",
         };
@@ -37,21 +34,6 @@ export default class App extends Component {
             .catch((err) => console.log("err at /user", err));
     }
 
-    toggleModal() {
-        // console.log("toggleModal fn is running!");
-        this.setState({
-            uploaderIsVisible: !this.state.uploaderIsVisible,
-        });
-    }
-
-    handleSubmitInApp(imageUrl) {
-        //console.log("imageurl", imageUrl)
-        this.setState({
-            imageUrl: imageUrl,
-            uploaderIsVisible: false,
-        });
-    }
-
     setBioInApp(newBio) {
         this.setState({
             bio: newBio,
@@ -70,26 +52,13 @@ export default class App extends Component {
                             </Route>
                             <Route path="/profile">
                                 <Header backButton="/" />
-                                {this.state.uploaderIsVisible && (
-                                    <Uploader
-                                        handleSubmitInApp={(url) =>
-                                            this.handleSubmitInApp(url)
-                                        }
-                                    />
-                                )}
 
-                                {!this.state.uploaderIsVisible && (
-                                    <Profile
-                                        first={this.state.first}
-                                        last={this.state.last}
-                                        imageUrl={this.state.imageUrl}
-                                        toggleModal={() => this.toggleModal()}
-                                        bio={this.state.bio}
-                                        setBioInApp={(bio) =>
-                                            this.setBioInApp(bio)
-                                        }
-                                    />
-                                )}
+                                <Profile
+                                    first={this.state.first}
+                                    last={this.state.last}
+                                    bio={this.state.bio}
+                                    setBioInApp={(bio) => this.setBioInApp(bio)}
+                                />
                             </Route>
 
                             <Route path="/login">

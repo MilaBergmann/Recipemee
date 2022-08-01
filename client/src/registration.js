@@ -51,7 +51,7 @@ export default class Registration extends Component {
         return (
             <div className="register">
                 <div className="outerContainer">
-                    <section className="formContainer">
+                    <section className="registerContainer">
                         <h1>Register</h1>
                         {this.state.error && (
                             <p>Something is wrong, please try again again</p>

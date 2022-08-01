@@ -1,9 +1,14 @@
-function Details() {
+function Details({ myRecipes }) {
+    console.log(myRecipes, "in detail");
     return (
         <div>
             <section>
-                <h3>Ingredients: </h3>
-                <h3>Steps: </h3>
+                {myRecipes.map((myRecipe) => (
+                    <section key={myRecipe.id}>
+                        <h3>Ingredients: {myRecipe.ingredients} </h3>
+                        <h3>Steps: {myRecipe.steps} </h3>
+                    </section>
+                ))}
             </section>
         </div>
     );
