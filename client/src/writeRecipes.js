@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
 import RecipeUploader from "./recipeUploader";
 export default function writeRecipes() {
     const [addRecipeIsVisible, setAddRecipeIsVisible] = useState(false);
@@ -8,6 +9,8 @@ export default function writeRecipes() {
         setAddRecipeIsVisible(!addRecipeIsVisible);
         setWriteRecipesIsVisible(!writeRecipesIsVisible);
     };
+
+  
 
     return (
         <>
@@ -21,6 +24,9 @@ export default function writeRecipes() {
                         >
                             Write Recipes
                         </button>
+                        <Link to="/profile" className="toProfile">
+                            Or Click Here To See All Your Recipes
+                        </Link>
                     </section>
                 </div>
             )}

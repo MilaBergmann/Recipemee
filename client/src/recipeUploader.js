@@ -13,6 +13,7 @@ export default function RecipeUploader({ toggleModal }) {
             .then((resp) => resp.json())
             .then((data) => {
                 console.log("data at upload", data);
+                toggleModal();
             })
             .catch((err) => {
                 console.log("err at fetching /upload", err);

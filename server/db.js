@@ -86,6 +86,16 @@ module.exports.getRecipes = () => {
         ORDER BY id DESC;`
     );
 };
+
+module.exports.getMyRecipes = (id) => {
+    return db.query(
+        `SELECT * FROM Recipes
+         WHERE user_id = $1
+        ORDER BY id DESC;`,
+        [id]
+    );
+};
+
 module.exports.updateBio = (id, bio) => {
     return db.query(
         `UPDATE users

@@ -243,14 +243,27 @@ app.post("/upload/:action", uploader.single("image"), s3.upload, (req, res) => {
     }
 });
 
-app.get("/recipes", (req, res) => {
-    db.getRecipes()
-        .then((results) => {
-            res.json(results.rows);
-        })
-        .catch((err) => {
-            console.log("Error at getting items", err);
-        });
+app.get("/recipes/:action", (req, res) => {
+    if(req.params.action == "all"){
+
+        db.getRecipes()
+            .then((results) => {
+                res.json(results.rows);
+            })
+            .catch((err) => {
+                console.log("Error at getting all", err);
+            });
+    } else if (req.params.action =="my") {
+        console.log('userid', req.session.userId);
+        db.getMyRecipes(req.session.userId)
+            .then((results) => {
+                console.log('my recipes', results.rows);
+                res.json(results.rows);
+            })
+            .catch((err) => {
+                console.log("Error at getting my R", err);
+            });
+    }
 });
 
 app.post("/add/bio", (req, res) => {

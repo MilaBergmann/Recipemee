@@ -63,10 +63,7 @@ export default class Bio extends Component {
                             defaultValue={this.props.bio}
                             onChange={(e) => this.handleChange(e)}
                         ></textarea>
-                        <button
-                            className="save"
-                            onClick={() => this.saveBio()}
-                        >
+                        <button className="save" onClick={() => this.saveBio()}>
                             Save Bio
                         </button>
                     </section>

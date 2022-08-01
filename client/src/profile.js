@@ -1,4 +1,5 @@
 import ProfilePic from "./profilePic";
+import MyRecipe from "./myRecipe";
 
 export default function Profile({ first, last, imageUrl, bio, setBioInApp }) {
     return (
@@ -12,6 +13,9 @@ export default function Profile({ first, last, imageUrl, bio, setBioInApp }) {
                     setBioInApp={setBioInApp}
                 />
             </section>
+            <div className="myRecipes">
+                <MyRecipe />
+            </div>
         </>
     );
 }
