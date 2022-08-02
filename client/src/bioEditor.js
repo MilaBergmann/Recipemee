@@ -58,12 +58,12 @@ export default class Bio extends Component {
                     <section className="profile-bio">
                         <textarea
                             name="bio"
-                            rows="10"
-                            cols="15"
+                            rows="6"
+                            cols="14"
                             defaultValue={this.props.bio}
                             onChange={(e) => this.handleChange(e)}
                         ></textarea>
-                        <button className="save" onClick={() => this.saveBio()}>
+                        <button className="saveBio" onClick={() => this.saveBio()}>
                             Save Bio
                         </button>
                     </section>

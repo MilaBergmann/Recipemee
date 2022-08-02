@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import  TinderCard from "react-tinder-card";
+import { Link } from "react-router-dom";
 
 export default function MyRecipe() {
     const [myRecipes, setMyRecipes] = useState([]);
@@ -29,13 +30,16 @@ export default function MyRecipe() {
 
     return (
         <div>
-            <section>
-                <p>Swipe Cards to See More of Your Recipes</p>
-            </section>
             {myRecipes.length == 0 ? (
-                <p>It seems like you don't have your own recipes yet! </p>
+                <div className="toWriteRecipes">
+                    <p>It seems like you don't have your own recipes yet! </p>
+                    <Link to="/write" className="linkToWriteRecipes"> Click Here To Write Your Recipes</Link>
+                </div>
             ) : (
                 <div>
+                    <section>
+                        <p>Swipe Cards to See More of Your Recipes</p>
+                    </section>
                     <div className="gallery">
                         {myRecipes.map((myRecipe) => (
                             <TinderCard key={myRecipe.id} className="swipe">

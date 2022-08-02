@@ -14,18 +14,17 @@ export default function ProfilePic({
     const toggleUploader = () => {
         setUploaderIsVisible(!uploaderIsVisible);
     };
-    imageUrl = imageUrl || "/default.jpg";
+    imageUrl = imageUrl || "/me.png";
 
     return (
         <>
-            <div className="profile-image">
-                <img
-                    className="profile-pic"
-                    src={imageUrl}
-                    alt={first + last}
-                    onClick={() => toggleUploader()}
-                />
-            </div>
+            <img
+                className="profile-pic"
+                src={imageUrl}
+                alt={first + last}
+                onClick={() => toggleUploader()}
+            />
+
             {uploaderIsVisible && <Uploader />}
             <div className="profile-user-settings">
                 <section className="userName">
