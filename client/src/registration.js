@@ -101,7 +101,10 @@ export default class Registration extends Component {
                             Already a member? Log in
                         </Link>
                     </section>
-                    <section className="about"></section>
+                    <section className="about">
+                        <img src="./chef.png" className="chef"></img>
+                        <p>Sharing Recipes is Caring.</p>
+                    </section>
                 </div>
             </div>
         );

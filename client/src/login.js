@@ -85,7 +85,10 @@ export default class Login extends Component {
                             Not a member? Click here to register!
                         </Link>
                     </section>
-                    <section className="about"></section>
+                    <section className="about">
+                        <img src="./chef.png" className="chef"></img>
+                        <p>Sharing Recipes is Caring.</p>
+                    </section>
                 </div>
             </div>
         );
