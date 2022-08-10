@@ -1,2 +1,2 @@
-recipeme is a recipe sharing platform developed with react
-https://recipemee.herokuapp.com/
+recipeme is a recipe sharing platform developed with react.
+Link: https://recipemee.herokuapp.com/
