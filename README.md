@@ -1,5 +1,12 @@
+## Overview:
 recipeme is a recipe sharing platform developed with react.
 Link: https://recipemee.herokuapp.com/
+
+## Features:
+-   Application has a top navigation that allows the user to navigate to:
+    -   Personal profile, where contains profile picture that users can update, a bio section, and users can see their own recipes here and swipe recipes card.
+    -   Page where users can update their recipe.      
+    -   Link that will enable the user to log out.
 
 ## 🌱 Technology
 
